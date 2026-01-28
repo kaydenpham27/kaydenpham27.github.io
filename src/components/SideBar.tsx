@@ -15,8 +15,8 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
   const navItems = [
     { to: "/", label: "KIEN'S LOG BOOK", section: "INTRO" },
     // { to: "/portfolio", label: "PORTFOLIO", section: "PORTFOLIO" },
+    { to: "/blogs", label: "BLOGS", section: "BLOGS" },
     { to: "/projects", label: "PROJECTS", section: "PROJECTS" },
-    // { to: "/blogs", label: "BLOGS", section: "BLOGS" },
     { to: "/life", label: "LIFE", section: "LIFE" },
   ];
 
