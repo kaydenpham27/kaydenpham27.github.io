@@ -35,7 +35,9 @@ export const LifePostPage = () => {
       .catch((e: unknown) => {
         if (e instanceof Error && e.name === "AbortError") return;
         setError(
-          e instanceof Error ? e.message : "Something went wrong loading this post.",
+          e instanceof Error
+            ? e.message
+            : "Something went wrong loading this post.",
         );
       })
       .finally(() => {
