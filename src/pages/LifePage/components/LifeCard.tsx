@@ -22,11 +22,7 @@ export const LifeCard = ({
   endDate,
 }: LifeCardProps) => {
   return (
-    <Link
-      to={`${url}`}
-      title={`View ${title} in details`}
-      className="block w-full flex-shrink-0"
-    >
+    <Link to={`${url}`} title={`View ${title} in details`} className="w-full">
       <Card className="h-full flex flex-col items-center shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
         <CardHeader className="flex flex-col text-start w-full">
           <CardTitle>

@@ -1,4 +1,3 @@
-import { ProfileCard } from "@/components/ProfileCard";
 import { useParams } from "react-router";
 import { Card, CardContent } from "@/components/ui/card";
 import { MarkdownRenderer } from "@/components/MarkdownRenderer";
@@ -48,23 +47,18 @@ export const LifePostPage = () => {
   }, [contentUri]);
 
   return (
-    <div className="grid md:grid-cols-[19rem_auto] grid-cols-1 justify-stretch gap-5">
-      <div>
-        <ProfileCard />
-      </div>
-      <Card>
-        <CardContent className="pt-6">
-          {loading && (
-            <Typography.Muted className="font-thin">Loading…</Typography.Muted>
-          )}
-          {error && !loading && (
-            <Typography.Muted className="font-thin text-red-600">
-              {error}
-            </Typography.Muted>
-          )}
-          {!loading && !error && <MarkdownRenderer content={markdown} />}
-        </CardContent>
-      </Card>
-    </div>
+    <Card>
+      <CardContent className="pt-6">
+        {loading && (
+          <Typography.Muted className="font-thin">Loading…</Typography.Muted>
+        )}
+        {error && !loading && (
+          <Typography.Muted className="font-thin text-red-600">
+            {error}
+          </Typography.Muted>
+        )}
+        {!loading && !error && <MarkdownRenderer content={markdown} />}
+      </CardContent>
+    </Card>
   );
 };

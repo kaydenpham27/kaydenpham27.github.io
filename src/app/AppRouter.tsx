@@ -2,6 +2,7 @@ import { SideBar } from "@/components/SideBar";
 import { BASE_URL } from "@/constants";
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
+import { MainLayout } from "./App";
 
 const HomePage = lazy(() =>
   import("@/pages/HomePage").then((m) => ({ default: m.HomePage })),
@@ -34,13 +35,15 @@ export const AppRouter = () => {
       <SideBar>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
-            <Route path="/blogs" element={<BlogsPage />} />
-            <Route path="/life" element={<LifePage />} />
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/blogs" element={<BlogsPage />} />
+              <Route path="/life" element={<LifePage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+              <Route path="*" element={<HomePage />} />
+            </Route>
             <Route path="/life/:contentUri" element={<LifePostPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
-            <Route path="*" element={<HomePage />} />
           </Routes>
         </Suspense>
       </SideBar>
