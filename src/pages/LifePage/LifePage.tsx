@@ -21,10 +21,10 @@ export const LifePage = () => {
         <ProfileCard />
       </div>
       <div className="flex flex-row flex-wrap items-start gap-2">
-        {pages.map((page, index) => {
+        {pages.map((page) => {
           return (
             <LifeCard
-              key={index}
+              key={page.url}
               title={page.title}
               description={page.description}
               url={page.url}

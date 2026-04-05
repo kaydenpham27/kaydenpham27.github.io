@@ -15,6 +15,7 @@ export const HomePage = () => {
           <Typography.H4 className="pb-2"> Phạm Trung Kiên </Typography.H4>
           <img
             src={`${BASE_URL}/kien-with-flower.jpg`}
+            alt="Kien at Nabana no Sato flower garden, Japan"
             className="w-180 mx-auto shadow-2xl rounded-sm"
           />
           <Typography.Muted className="mx-auto font-thin text-gray-500">
@@ -40,15 +41,15 @@ export const HomePage = () => {
             Leetcode or SWE interview questions. I love the satisfaction after
             solving a problem, and this satisfaction gradually became a love for
             beautiful algorithms and techniques. Thinking back, I believe such
-            an early exposure to a subset of Computer Science definitely lighten
-            my curiosity to the boarder universe of Computer.
+            an early exposure to a subset of Computer Science definitely sparked
+            my curiosity about the broader universe of computing.
           </Typography.Small>
           <Typography.Small className="font-thin leading-5">
             I graduated with a bachelor of Computer Science from Queensland
             University of Technology, where I spent a few semester working as a
             research assistant. After graduating, I used to have the thought of
             doing a PhD or Master in Quantum Computing or Computer Science but
-            unfortunately, this plan is cancled or postponed to the far future.
+            unfortunately, this plan is cancelled or postponed to the far future.
             There are things that I need to do first.
           </Typography.Small>
 
@@ -58,7 +59,7 @@ export const HomePage = () => {
           </Typography.Large>
           <Typography.Small className="font-thin leading-5">
             This is my log book, where I store my thoughts and comments on
-            various aspects of life, expect to see reviews on books, solutions
+            various aspects of life. Expect reviews of books, solutions
             for interesting problems, or at least interesting to me, discussions
             on Computer Science topics, and maybe beautiful images.
           </Typography.Small>

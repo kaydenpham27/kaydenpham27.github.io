@@ -31,11 +31,16 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
               className="flex flex-col items-center justify-center px-3 cursor-pointer transition-colors hover:bg-gray-100"
               onClick={() => setFocusSection("")}
             >
-              <img src={`${BASE_URL}/daffodils.png`} className="w-8" />
+              <img
+                src={`${BASE_URL}/daffodils.png`}
+                className="w-8"
+                alt="Site logo"
+              />
             </Link>
             {navItems.map((item) => {
               return (
                 <Link
+                  key={item.section}
                   to={item.to}
                   className={cn(
                     "flex items-center px-3 cursor-pointer hover:bg-gray-100 hover:text-blue-600 transition-colors",
@@ -63,7 +68,7 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
               <img
                 src={`${BASE_URL}/daffodils.png`}
                 className="w-8"
-                alt="Logo"
+                alt="Site logo"
               />
             </Link>
 
