@@ -22,10 +22,10 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
   ];
 
   return (
-    <>
-      <div className="bg-[#fff] text-[#4a4a4a] shadow-md">
+    <div className="w-full min-w-0">
+      <div className="w-full bg-[#fff] text-[#4a4a4a] shadow-md">
         {/* Desktop Display */}
-        <div className="hidden lg:flex flex-row mx-auto max-w-380 pl-[2rem] pr-[2rem] h-12 justify-between overflow-x-auto scrollbar-hidden">
+        <div className="mx-auto hidden h-12 w-full max-w-380 flex-row justify-between overflow-x-auto pl-[2rem] pr-[2rem] scrollbar-hidden lg:flex">
           <div className="flex flex-row">
             <button
               type="button"
@@ -71,7 +71,7 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
         </div>
 
         {/* Mobile Display */}
-        <div className="flex flex-col lg:hidden mx-auto max-w-380 pl-[2rem] pr-[2rem]">
+        <div className="mx-auto flex w-full max-w-380 flex-col pl-[2rem] pr-[2rem] lg:hidden">
           <div className="flex flex-row w-full items-center justify-between h-12 px-3">
             <button
               type="button"
@@ -141,10 +141,10 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
-        className="space-y-2 mx-auto max-w-380 pl-[2rem] pr-[2rem] pt-10 pb-10"
+        className="mx-auto w-full max-w-380 space-y-2 pl-[2rem] pr-[2rem] pt-10 pb-10"
       >
         {children}
       </motion.div>
-    </>
+    </div>
   );
 };

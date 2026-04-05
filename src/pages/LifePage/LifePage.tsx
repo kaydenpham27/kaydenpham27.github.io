@@ -1,5 +1,6 @@
 import type { Post } from "@/types";
 import { LifeCard } from "./components/LifeCard";
+import { motion } from "motion/react";
 
 const pages: Post[] = [
   {
@@ -14,7 +15,12 @@ const pages: Post[] = [
 
 export const LifePage = () => {
   return (
-    <div className="flex flex-row flex-wrap items-start gap-2">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-row flex-wrap items-center gap-2"
+    >
       {pages.map((page) => {
         return (
           <LifeCard
@@ -28,6 +34,6 @@ export const LifePage = () => {
           />
         );
       })}
-    </div>
+    </motion.div>
   );
 };
