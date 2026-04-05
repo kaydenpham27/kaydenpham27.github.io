@@ -7,7 +7,11 @@ type MailIconProps = {
 
 export const MailIcon = ({ className }: MailIconProps) => {
   return (
-    <a href="mailto:kienpt5kkd@gmail.com" className={className}>
+    <a
+      href="mailto:kienpt5kkd@gmail.com"
+      className={className}
+      aria-label="Email Kien Pham"
+    >
       <Mail width={20} />
     </a>
   );

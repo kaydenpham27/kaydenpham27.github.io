@@ -7,7 +7,7 @@ import { GITHUB_PROFILE_URL } from "@/constants/github";
 import { GitHubIcon } from "./GithubIcon";
 import { InstagramIcon } from "./InstagramIcon";
 import { LinkedInIcon } from "./LinkedInIcon";
-import { MailIcon } from "./Mailcon";
+import { MailIcon } from "./MailIcon";
 import { CodeforcesIcon } from "./CodeforcesIcon";
 import { BASE_URL } from "@/constants";
 
@@ -23,6 +23,7 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
       <CardContent className="flex flex-col justify-center">
         <img
           src={`${BASE_URL}/AVA.png`}
+          alt="Portrait of Trung Kien Pham"
           className="w-30 place-self-center rounded-full border-solid border-1 border-gray-700"
         />
         <Typography.Large className="pt-5">Trung Kien Pham</Typography.Large>
@@ -65,7 +66,12 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
 
           {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-3">
-            <a className="flex" href={GITHUB_PROFILE_URL} target="_blank">
+            <a
+              className="flex"
+              href={GITHUB_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="outline"
                 className="min-w-30 cursor-pointer"
@@ -75,7 +81,12 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
                 <Typography.Muted>Follow</Typography.Muted>
               </Button>
             </a>
-            <a className="flex" href={GITHUB_PROFILE_URL} target="_blank">
+            <a
+              className="flex"
+              href={GITHUB_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button
                 variant="outline"
                 className="min-w-30 cursor-pointer"
