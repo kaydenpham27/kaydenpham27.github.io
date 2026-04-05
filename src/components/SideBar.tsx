@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "./ui/typography";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 import { LinkedInIcon } from "./LinkedInIcon";
 import { GitHubIcon } from "./GithubIcon";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ import { motion } from "motion/react";
 export const SideBar = ({ children }: { children: React.ReactNode }) => {
   const [focusSection, setFocusSection] = React.useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { to: "/", label: "KIEN'S LOG BOOK", section: "INTRO" },
@@ -26,32 +27,40 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
         {/* Desktop Display */}
         <div className="hidden lg:flex flex-row mx-auto max-w-380 pl-[2rem] pr-[2rem] h-12 justify-between overflow-x-auto scrollbar-hidden">
           <div className="flex flex-row">
-            <Link
-              to="/"
-              className="flex flex-col items-center justify-center px-3 cursor-pointer transition-colors hover:bg-gray-100"
-              onClick={() => setFocusSection("")}
+            <button
+              type="button"
+              className="flex flex-col items-center justify-center px-3 cursor-pointer transition-colors hover:bg-gray-100 bg-transparent border-none"
+              style={{ background: "none", border: "none" }}
+              onClick={() => {
+                setFocusSection("");
+                navigate("/");
+              }}
             >
               <img
                 src={`${BASE_URL}/daffodils.png`}
                 className="w-8"
                 alt="Site logo"
               />
-            </Link>
+            </button>
             {navItems.map((item) => {
               return (
-                <Link
+                <button
                   key={item.section}
-                  to={item.to}
+                  type="button"
                   className={cn(
-                    "flex items-center px-3 cursor-pointer hover:bg-gray-100 hover:text-blue-600 transition-colors",
+                    "flex items-center px-3 cursor-pointer hover:bg-gray-100 hover:text-blue-600 transition-colors bg-transparent border-none",
                     focusSection === item.section ? "text-blue-600" : "",
                   )}
-                  onClick={() => setFocusSection(item.section)}
+                  style={{ background: "none", border: "none" }}
+                  onClick={() => {
+                    setFocusSection(item.section);
+                    navigate(item.to);
+                  }}
                 >
                   <Typography.Small className="font-semibold">
                     {item.label}
                   </Typography.Small>
-                </Link>
+                </button>
               );
             })}
           </div>
@@ -64,13 +73,20 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
         {/* Mobile Display */}
         <div className="flex flex-col lg:hidden mx-auto max-w-380 pl-[2rem] pr-[2rem]">
           <div className="flex flex-row w-full items-center justify-between h-12 px-3">
-            <Link to="/" onClick={() => setFocusSection("")}>
+            <button
+              type="button"
+              style={{ background: "none", border: "none" }}
+              onClick={() => {
+                setFocusSection("");
+                navigate("/");
+              }}
+            >
               <img
                 src={`${BASE_URL}/daffodils.png`}
                 className="w-8"
                 alt="Site logo"
               />
-            </Link>
+            </button>
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -90,24 +106,26 @@ export const SideBar = ({ children }: { children: React.ReactNode }) => {
             <div className="border-t border-gray-200 bg-white">
               <nav className="flex flex-col py-2">
                 {navItems.map((item) => (
-                  <Link
+                  <button
                     key={item.section}
-                    to={item.to}
+                    type="button"
                     className={cn(
-                      "px-4 py-3 hover:bg-gray-100 hover:text-blue-600 transition-colors",
+                      "px-4 py-3 hover:bg-gray-100 hover:text-blue-600 transition-colors text-left w-full bg-transparent border-none",
                       focusSection === item.section
                         ? "text-blue-600 bg-gray-50"
                         : "",
                     )}
+                    style={{ background: "none", border: "none" }}
                     onClick={() => {
                       setFocusSection(item.section);
                       setMobileMenuOpen(false);
+                      navigate(item.to);
                     }}
                   >
                     <Typography.Small className="font-semibold">
                       {item.label}
                     </Typography.Small>
-                  </Link>
+                  </button>
                 ))}
               </nav>
 

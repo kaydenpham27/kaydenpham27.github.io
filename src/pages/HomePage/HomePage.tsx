@@ -49,8 +49,8 @@ export const HomePage = () => {
             University of Technology, where I spent a few semester working as a
             research assistant. After graduating, I used to have the thought of
             doing a PhD or Master in Quantum Computing or Computer Science but
-            unfortunately, this plan is cancelled or postponed to the far future.
-            There are things that I need to do first.
+            unfortunately, this plan is cancelled or postponed to the far
+            future. There are things that I need to do first.
           </Typography.Small>
 
           {/* What is this site */}
@@ -59,9 +59,9 @@ export const HomePage = () => {
           </Typography.Large>
           <Typography.Small className="font-thin leading-5">
             This is my log book, where I store my thoughts and comments on
-            various aspects of life. Expect reviews of books, solutions
-            for interesting problems, or at least interesting to me, discussions
-            on Computer Science topics, and maybe beautiful images.
+            various aspects of life. Expect reviews of books, solutions for
+            interesting problems, or at least interesting to me, discussions on
+            Computer Science topics, and maybe beautiful images.
           </Typography.Small>
 
           {/* How to contact me */}
