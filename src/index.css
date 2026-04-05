@@ -193,6 +193,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    /* Keeps layout width stable when a vertical scrollbar appears (e.g. tall Projects vs short Blogs). */
+    scrollbar-gutter: stable;
+  }
   body {
     @apply bg-background text-foreground;
   }

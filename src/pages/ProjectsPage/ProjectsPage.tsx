@@ -1,5 +1,6 @@
 import { ProjectCard, type ProjectCardProps } from "./components";
 import { BASE_URL } from "@/constants";
+import { motion } from "motion/react";
 
 // TODO: This will be retrieved through the API later
 const projects: ProjectCardProps[] = [
@@ -39,7 +40,12 @@ const projects: ProjectCardProps[] = [
 
 export const ProjectsPage = () => {
   return (
-    <div className="flex flex-row flex-wrap items-center gap-2">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-row flex-wrap items-center gap-2"
+    >
       {projects.map((project) => {
         return (
           <ProjectCard
@@ -55,6 +61,6 @@ export const ProjectsPage = () => {
           />
         );
       })}
-    </div>
+    </motion.div>
   );
 };
