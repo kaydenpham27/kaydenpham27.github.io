@@ -1,6 +1,4 @@
 import { ProjectCard, type ProjectCardProps } from "./components";
-import { ProfileCard } from "@/components/ProfileCard";
-import { TagsCard } from "@/components/TagsCard";
 import { BASE_URL } from "@/constants";
 
 // TODO: This will be retrieved through the API later
@@ -41,30 +39,22 @@ const projects: ProjectCardProps[] = [
 
 export const ProjectsPage = () => {
   return (
-    <div className="grid lg:grid-cols-[19rem_auto_15rem] grid-cols-1 justify-stretch gap-5">
-      <div>
-        <ProfileCard />
-      </div>
-      <div className="flex flex-row flex-wrap items-center gap-2">
-        {projects.map((project, index) => {
-          return (
-            <ProjectCard
-              key={index}
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              githubUrl={project.githubUrl}
-              imgPath={project.imgPath}
-              imgClassName={project.imgClassName}
-              startDate={project.startDate}
-              endDate={project.endDate}
-            />
-          );
-        })}
-      </div>
-      <div>
-        <TagsCard />
-      </div>
+    <div className="flex flex-row flex-wrap items-center gap-2">
+      {projects.map((project) => {
+        return (
+          <ProjectCard
+            key={project.githubUrl}
+            title={project.title}
+            description={project.description}
+            tags={project.tags}
+            githubUrl={project.githubUrl}
+            imgPath={project.imgPath}
+            imgClassName={project.imgClassName}
+            startDate={project.startDate}
+            endDate={project.endDate}
+          />
+        );
+      })}
     </div>
   );
 };
