@@ -11,7 +11,7 @@ export const HomePage = () => {
       transition={{ duration: 0.3 }}
       className="flex flex-row flex-wrap items-center gap-2"
     >
-      <Card className="w-full min-w-3xl">
+      <Card className="w-full">
         <CardHeader className="text-start">
           <Typography.H4 className="pb-2"> Phạm Trung Kiên </Typography.H4>
           <img

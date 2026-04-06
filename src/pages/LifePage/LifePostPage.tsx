@@ -4,6 +4,7 @@ import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import React from "react";
 import { BASE_URL } from "@/constants";
 import Typography from "@/components/ui/typography";
+import { motion } from "motion/react";
 
 export const LifePostPage = () => {
   const { contentUri } = useParams();
@@ -47,18 +48,25 @@ export const LifePostPage = () => {
   }, [contentUri]);
 
   return (
-    <Card>
-      <CardContent className="pt-6">
-        {loading && (
-          <Typography.Muted className="font-thin">Loading…</Typography.Muted>
-        )}
-        {error && !loading && (
-          <Typography.Muted className="font-thin text-red-600">
-            {error}
-          </Typography.Muted>
-        )}
-        {!loading && !error && <MarkdownRenderer content={markdown} />}
-      </CardContent>
-    </Card>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-row flex-wrap items-center gap-2"
+    >
+      <Card>
+        <CardContent className="pt-6">
+          {loading && (
+            <Typography.Muted className="font-thin">Loading…</Typography.Muted>
+          )}
+          {error && !loading && (
+            <Typography.Muted className="font-thin text-red-600">
+              {error}
+            </Typography.Muted>
+          )}
+          {!loading && !error && <MarkdownRenderer content={markdown} />}
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };

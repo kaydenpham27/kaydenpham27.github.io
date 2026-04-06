@@ -21,6 +21,19 @@ export function MainLayout() {
   );
 }
 
+export function DetailedLayout() {
+  return (
+    <div className="grid lg:grid-cols-[19rem_auto] grid-cols-1 justify-stretch gap-5">
+      <div>
+        <ProfileCard />
+      </div>
+      <main className="min-w-0">
+        <Outlet />
+      </main>
+    </div>
+  );
+}
+
 export const App = () => {
   return (
     <AppProvider>

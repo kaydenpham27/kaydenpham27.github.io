@@ -8,72 +8,9 @@ import {
 } from "@/components/ui/card";
 import Typography from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
+import type { ProjectCardTag } from "@/types/ProjectCardTag";
 import { Calendar1, CalendarCheck } from "lucide-react";
-
-// TODO: Add more stuff here
-export type ProjectCardTag =
-  // Cloud & Infrastructure
-  | "AWS"
-  | "Azure"
-  | "GCP"
-  | "Cloud"
-  | "Serverless"
-  | "CI/CD"
-  | "Docker"
-  | "Kubernetes"
-
-  // Languages
-  | "TypeScript"
-  | "JavaScript"
-  | "Python"
-  | "Go"
-  | "Java"
-  | "Rust"
-  | "C++"
-
-  // Frontend
-  | "React"
-  | "Next.js"
-  | "Vue"
-  | "Svelte"
-  | "Tailwind"
-  | "Vite"
-
-  // Backend
-  | "Node.js"
-  | "Express"
-  | "FastAPI"
-  | "Django"
-  | "Spring Boot"
-
-  // Databases
-  | "PostgreSQL"
-  | "MongoDB"
-  | "DynamoDB"
-  | "Redis"
-  | "MySQL"
-
-  // Tools & Concepts
-  | "API"
-  | "GraphQL"
-  | "REST"
-  | "WebSocket"
-  | "OAuth"
-  | "JWT"
-  | "Microservices"
-  | "Monorepo"
-
-  // Categories
-  | "Web"
-  | "Mobile"
-  | "CLI"
-  | "Library"
-  | "Full Stack"
-  | "Frontend"
-  | "Backend"
-  | "DevOps"
-  | "AI/ML"
-  | "Open Source";
+import { motion } from "motion/react";
 
 export type ProjectCardProps = {
   title: string;
@@ -84,6 +21,7 @@ export type ProjectCardProps = {
   imgClassName: string;
   startDate: string;
   endDate: string;
+  delay: number;
 };
 
 export const ProjectCard = ({
@@ -95,12 +33,25 @@ export const ProjectCard = ({
   githubUrl,
   startDate,
   endDate,
+  delay,
 }: ProjectCardProps) => {
+  const handleCardClick = () => {
+    if (githubUrl) {
+      window.open(githubUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <a
-      href={githubUrl}
-      title={`View ${title} in details`}
-      className="block w-full flex-shrink-0"
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.3,
+        delay,
+      }}
+      className="w-full"
+      onClick={handleCardClick}
+      style={{ cursor: "pointer" }}
     >
       <Card className="h-full flex flex-col items-center shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
         <CardHeader className="flex flex-col text-start w-full">
@@ -138,7 +89,7 @@ export const ProjectCard = ({
             src={imgPath}
             className={cn("w-full h-auto border-gray-200 ", imgClassName)}
             alt={title}
-          />{" "}
+          />
           <div className="flex flex-row flex-wrap justify-center gap-2">
             {tags.map((tag) => {
               return (
@@ -150,6 +101,6 @@ export const ProjectCard = ({
           </div>
         </CardContent>
       </Card>
-    </a>
+    </motion.div>
   );
 };
