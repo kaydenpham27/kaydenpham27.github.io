@@ -3,7 +3,7 @@ import { BASE_URL } from "@/constants";
 import { motion } from "motion/react";
 
 // TODO: This will be retrieved through the API later
-const projects: ProjectCardProps[] = [
+const projects: any[] = [
   {
     title: "Telegram Clone",
     description: "Cloned Telegram using Typescript and AWS",
@@ -40,13 +40,8 @@ const projects: ProjectCardProps[] = [
 
 export const ProjectsPage = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      className="flex flex-row flex-wrap items-center gap-2"
-    >
-      {projects.map((project) => {
+    <div className="flex flex-row flex-wrap items-center gap-2">
+      {projects.map((project, index) => {
         return (
           <ProjectCard
             key={project.githubUrl}
@@ -58,9 +53,10 @@ export const ProjectsPage = () => {
             imgClassName={project.imgClassName}
             startDate={project.startDate}
             endDate={project.endDate}
+            delay={index * 0.1}
           />
         );
       })}
-    </motion.div>
+    </div>
   );
 };

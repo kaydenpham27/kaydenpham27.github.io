@@ -9,9 +9,12 @@ import {
 import Typography from "@/components/ui/typography";
 import type { Post } from "@/types";
 import { Calendar1, CalendarCheck } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { motion } from "motion/react";
 
-type LifeCardProps = Post;
+type LifeCardProps = Post & {
+  delay: number;
+};
 
 export const LifeCard = ({
   title,
@@ -20,9 +23,23 @@ export const LifeCard = ({
   url,
   startDate,
   endDate,
+  delay,
 }: LifeCardProps) => {
+  const navigate = useNavigate();
+
   return (
-    <Link to={`${url}`} title={`View ${title} in details`} className="w-full">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.3,
+        delay,
+      }}
+      className="w-full"
+      onClick={() => {
+        navigate(url);
+      }}
+    >
       <Card className="h-full flex flex-col items-center shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
         <CardHeader className="flex flex-col text-start w-full">
           <CardTitle>
@@ -66,6 +83,6 @@ export const LifeCard = ({
           </div>
         </CardContent>
       </Card>
-    </Link>
+    </motion.div>
   );
 };
