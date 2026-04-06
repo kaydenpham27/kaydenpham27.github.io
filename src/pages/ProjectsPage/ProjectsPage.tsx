@@ -1,6 +1,5 @@
-import { ProjectCard, type ProjectCardProps } from "./components";
+import { ProjectCard } from "./components";
 import { BASE_URL } from "@/constants";
-import { motion } from "motion/react";
 
 // TODO: This will be retrieved through the API later
 const projects: any[] = [

@@ -9,7 +9,7 @@ import {
 import Typography from "@/components/ui/typography";
 import type { Post } from "@/types";
 import { Calendar1, CalendarCheck } from "lucide-react";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 
 type LifeCardProps = Post & {
