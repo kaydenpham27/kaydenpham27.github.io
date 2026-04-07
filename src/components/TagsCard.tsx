@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader } from "./ui/card";
 import Typography from "./ui/typography";
 import { Tag } from "./Tag";
+import { useState } from "react";
 
 type TagsCardProps = {
   className?: string;
@@ -27,6 +28,8 @@ const TAGS = [
 ];
 
 export const TagsCard = ({ className }: TagsCardProps) => {
+  const [tags] = useState(TAGS);
+
   // TODO: Hooks to retrieve tags
   return (
     <Card className={cn(className, "w-full max-w-90")}>
@@ -34,8 +37,8 @@ export const TagsCard = ({ className }: TagsCardProps) => {
         <Typography.Medium className="font-semibold">Tags</Typography.Medium>
       </CardHeader>
       <CardContent className="flex flex-wrap gap-3">
-        {TAGS.map((tag) => {
-          return <Tag label={tag.label} count={tag.count} />;
+        {tags.map((tag, index) => {
+          return <Tag label={tag.label} count={tag.count} key={index} />;
         })}
       </CardContent>
     </Card>

@@ -66,11 +66,14 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
 
           {/* Quick links */}
           <div className="flex flex-wrap justify-center gap-3">
-            <a
+            <div
               className="flex"
-              href={GITHUB_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                window.open(GITHUB_PROFILE_URL, "_blank", "noopener,noreferrer")
+              }
+              style={{ outline: "none" }}
             >
               <Button
                 variant="outline"
@@ -80,12 +83,15 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
                 <GitHubIcon className="px-0 w-5" />
                 <Typography.Muted>Follow</Typography.Muted>
               </Button>
-            </a>
-            <a
+            </div>
+            <div
               className="flex"
-              href={GITHUB_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              role="button"
+              tabIndex={0}
+              onClick={() =>
+                window.open(GITHUB_PROFILE_URL, "_blank", "noopener,noreferrer")
+              }
+              style={{ outline: "none" }}
             >
               <Button
                 variant="outline"
@@ -95,7 +101,7 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
                 <Coffee />
                 <Typography.Muted>Coffee</Typography.Muted>
               </Button>
-            </a>
+            </div>
           </div>
 
           {/* Social Media Links */}
