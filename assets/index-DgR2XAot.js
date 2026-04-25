@@ -1,0 +1,1 @@
+import{j as t,m as a}from"./index-D6I5i2Tx.js";const o=()=>t.jsx(a.div,{initial:{opacity:0,y:20},animate:{opacity:1,y:0},transition:{duration:.3},className:"flex flex-row flex-wrap items-center gap-2"});export{o as BlogsPage};
