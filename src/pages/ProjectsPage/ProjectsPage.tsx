@@ -11,7 +11,7 @@ const projects: any[] = [
     imgPath: `${BASE_URL}/project-images/telegram.png`,
     imgClassName: "w-30 h-30",
     startDate: "20-8-2025",
-    endDate: "22-8-2025",
+    endDate: "Present",
   },
   {
     title: "Competive Programming Solutions",
@@ -22,7 +22,7 @@ const projects: any[] = [
     imgPath: `${BASE_URL}/project-images/icpc.png`,
     imgClassName: "w-50 h-30",
     startDate: "20-8-2025",
-    endDate: "22-8-2025",
+    endDate: "Present",
   },
   {
     title: "Microservice Evaluation",
@@ -32,8 +32,8 @@ const projects: any[] = [
     githubUrl: "https://github.com/kaydenpham27/MicroserviceEvaluation",
     imgPath: `${BASE_URL}/project-images/eBPF.png`,
     imgClassName: "w-60 h-30",
-    startDate: "20-8-2025",
-    endDate: "22-8-2025",
+    startDate: "??-??-2022",
+    endDate: "??-??-2022",
   },
 ];
 
