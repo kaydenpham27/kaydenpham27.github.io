@@ -19,12 +19,12 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
   // TODO: Hooks to retrieve data
 
   return (
-    <Card className={cn(className, "w-full")}>
+    <Card className={cn(className, "w-full min-w-0 max-w-full")}>
       <CardContent className="flex flex-col justify-center">
         <img
           src={`${BASE_URL}/AVA.png`}
           alt="Portrait of Trung Kien Pham"
-          className="w-30 place-self-center rounded-full border-solid border-1 border-gray-700"
+          className="aspect-square place-self-center rounded-full border border-solid border-gray-700 object-cover w-[30%] lg:w-[50%]"
         />
         <Typography.Large className="pt-5">Trung Kien Pham</Typography.Large>
         <Typography.Muted className="italic">
