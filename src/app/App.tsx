@@ -7,7 +7,7 @@ import { AppProvider } from "./AppProvider";
 
 export function MainLayout() {
   return (
-    <div className="grid lg:grid-cols-[19rem_auto_15rem] grid-cols-1 justify-stretch gap-5">
+    <div className="grid lg:grid-cols-[21%_auto_17%] grid-cols-1 justify-stretch gap-5">
       <div>
         <ProfileCard />
       </div>

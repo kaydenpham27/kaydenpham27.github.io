@@ -32,7 +32,7 @@ export const TagsCard = ({ className }: TagsCardProps) => {
 
   // TODO: Hooks to retrieve tags
   return (
-    <Card className={cn(className, "w-full max-w-90")}>
+    <Card className={cn(className, "w-full min-w-0 max-w-full")}>
       <CardHeader className="flex">
         <Typography.Medium className="font-semibold">Tags</Typography.Medium>
       </CardHeader>
