@@ -1,6 +1,6 @@
 import { SideBar } from "@/components/SideBar";
 import { BASE_URL } from "@/constants";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { DetailedLayout, MainLayout } from "./App";
 
@@ -23,31 +23,23 @@ const PortfolioPage = lazy(() =>
   import("@/pages/PortfolioPage").then((m) => ({ default: m.PortfolioPage })),
 );
 
-const LoadingComponent = () => (
-  <div className="mx-auto max-w-380 px-8 py-16 text-center text-sm text-gray-500">
-    Loading…
-  </div>
-);
-
 export const AppRouter = () => {
   return (
     <BrowserRouter basename={BASE_URL}>
       <SideBar>
-        <Suspense fallback={<LoadingComponent />}>
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/blogs" element={<BlogsPage />} />
-              <Route path="/life" element={<LifePage />} />
-              <Route path="/portfolio" element={<PortfolioPage />} />
-              <Route path="*" element={<HomePage />} />
-            </Route>
-            <Route element={<DetailedLayout />}>
-              <Route path="/life/:contentUri" element={<LifePostPage />} />
-            </Route>
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/blogs" element={<BlogsPage />} />
+            <Route path="/life" element={<LifePage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Route>
+          <Route element={<DetailedLayout />}>
+            <Route path="/life/:contentUri" element={<LifePostPage />} />
+          </Route>
+        </Routes>
       </SideBar>
     </BrowserRouter>
   );

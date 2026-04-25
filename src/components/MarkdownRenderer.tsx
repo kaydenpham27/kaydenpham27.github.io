@@ -21,11 +21,19 @@ const components: Components = {
   h4: ({ children }) => (
     <Typography.H4 className="text-start">{children}</Typography.H4>
   ),
-  p: ({ children }) => (
-    <Typography.P className="text-start mb-4 font-thin">
-      {children}
-    </Typography.P>
-  ),
+  p: ({ node, children }) => {
+    const hasImageChild = node?.children?.some(
+      (child) => child.type === "element" && child.tagName === "img",
+    );
+
+    if (hasImageChild) return <>{children}</>;
+
+    return (
+      <Typography.P className="text-start mb-4 font-thin">
+        {children}
+      </Typography.P>
+    );
+  },
   code: ({ className, children }) => {
     return (
       <Typography.InlineCode className={className}>
@@ -42,14 +50,21 @@ const components: Components = {
     <ol className="list-decimal list-inside mb-4 space-y-2">{children}</ol>
   ),
   li: ({ children }) => <li className="ml-4 text-gray-800">{children}</li>,
-  img: ({ src, alt }) => (
-    <div className="flex flex-col text-center max-w-150 max-h-150 items-center mx-auto">
-      <img src={src} alt={alt ?? ""} className="w-fit h-full rounded-lg mt-4" />
-      <Typography.Muted className="mx-auto font-thin text-gray-500 mt-2">
-        {alt}
-      </Typography.Muted>
-    </div>
-  ),
+  img: ({ src, alt }) => {
+    const formattedSrc = src?.replace("life", "life-content");
+    return (
+      <div className="flex flex-col text-center max-w-150 max-h-150 items-center mx-auto">
+        <img
+          src={formattedSrc}
+          alt={alt ?? ""}
+          className="w-fit h-full rounded-lg mt-4"
+        />
+        <Typography.Muted className="mx-auto font-thin text-gray-500 mt-2">
+          {alt}
+        </Typography.Muted>
+      </div>
+    );
+  },
 };
 
 type MarkdownRendererProps = {
