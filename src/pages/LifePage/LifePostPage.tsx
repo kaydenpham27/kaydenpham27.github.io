@@ -5,6 +5,7 @@ import React from "react";
 import { BASE_URL } from "@/constants";
 import Typography from "@/components/ui/typography";
 import { motion } from "motion/react";
+import { LifePostPageSkeleton } from "./components/LifePostPageSkeleton";
 
 export const LifePostPage = () => {
   const { contentUri } = useParams();
@@ -47,6 +48,10 @@ export const LifePostPage = () => {
     return () => ac.abort();
   }, [contentUri]);
 
+  if (loading) {
+    return <LifePostPageSkeleton />;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -56,9 +61,6 @@ export const LifePostPage = () => {
     >
       <Card>
         <CardContent className="pt-6">
-          {loading && (
-            <Typography.Muted className="font-thin">Loading…</Typography.Muted>
-          )}
           {error && !loading && (
             <Typography.Muted className="font-thin text-red-600">
               {error}
