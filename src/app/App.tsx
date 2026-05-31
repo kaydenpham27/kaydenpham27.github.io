@@ -4,6 +4,7 @@ import { TagsCard } from "@/components/TagsCard";
 import { Outlet } from "react-router";
 import { AppRouter } from "./AppRouter";
 import { AppProvider } from "./AppProvider";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 export function MainLayout() {
   return (
@@ -36,8 +37,10 @@ export function DetailedLayout() {
 
 export const App = () => {
   return (
-    <AppProvider>
-      <AppRouter />
-    </AppProvider>
+    <ErrorBoundary>
+      <AppProvider>
+        <AppRouter />
+      </AppProvider>
+    </ErrorBoundary>
   );
 };

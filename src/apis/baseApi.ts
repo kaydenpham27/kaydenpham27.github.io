@@ -17,9 +17,6 @@ type ApiConfig = {
 
 const createApiClient = (customConfig: ApiConfig) => {
   const baseUrl = customConfig.baseUrl ?? API_BASE_URL;
-  // for testing purposes:
-  // const baseUrl =
-  //   "https://hz05s8ymp9.execute-api.us-west-2.amazonaws.com/test";
   const resourceName = customConfig.resourceName;
 
   const get = async <T>(
