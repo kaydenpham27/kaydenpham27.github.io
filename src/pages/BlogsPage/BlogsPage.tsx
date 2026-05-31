@@ -9,8 +9,7 @@ export const BlogsPage = () => {
   }
 
   if (error) {
-    console.error(error);
-    return <></>;
+    throw error;
   }
 
   return (

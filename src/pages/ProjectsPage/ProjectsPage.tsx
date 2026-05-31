@@ -9,8 +9,7 @@ export const ProjectsPage = () => {
   }
 
   if (error) {
-    console.error(error);
-    return <></>;
+    throw error;
   }
 
   return (

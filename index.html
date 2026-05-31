@@ -2,8 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/daffodils.png" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="https://d1q5qkblrhkq6b.cloudfront.net/daffodils.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               script-src 'self';
+               style-src 'self' 'unsafe-inline';
+               img-src 'self' data: https://d1q5qkblrhkq6b.cloudfront.net;
+               connect-src 'self' https://d1q5qkblrhkq6b.cloudfront.net;
+               font-src 'self' data:;
+               object-src 'none';
+               frame-ancestors 'none';"
+    />
     <link href="/src/index.css" rel="stylesheet" />
     <title>Log Book</title>
 

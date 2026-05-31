@@ -27,7 +27,9 @@ export const BlogContentCard = ({
           <Typography.Small className="text-muted-foreground">
             {startDate} — {endDate}
           </Typography.Small>
-          <Typography.Muted className="line-clamp-3">{description}</Typography.Muted>
+          <Typography.Muted className="line-clamp-3">
+            {description}
+          </Typography.Muted>
         </CardHeader>
         <CardContent className="flex flex-row flex-wrap gap-2">
           {tags.map((tag) => (

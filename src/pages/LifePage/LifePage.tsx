@@ -10,8 +10,7 @@ export const LifePage = () => {
   }
 
   if (error) {
-    console.error(error);
-    return <></>;
+    throw error;
   }
 
   return (
