@@ -10,13 +10,38 @@ import { LinkedInIcon } from "./LinkedInIcon";
 import { MailIcon } from "./MailIcon";
 import { CodeforcesIcon } from "./CodeforcesIcon";
 import { BASE_URL } from "@/constants";
+import { useMemo } from "react";
+import { useLifePosts } from "@/hooks/useLifePosts";
+import { useProjects } from "@/hooks/useProjects";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
+import { useCountUp } from "@/hooks/useCountUp";
 
 type ProfileCardProps = {
   className?: string;
 };
 
 export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
-  // TODO: Hooks to retrieve data
+  const { data: lifePosts = [] } = useLifePosts();
+  const { data: projects = [] } = useProjects();
+  const { data: blogPosts = [] } = useBlogPosts();
+
+  const stats = useMemo(() => {
+    const posts = lifePosts.length + projects.length + blogPosts.length;
+    const categories = [lifePosts, projects, blogPosts].filter(
+      (arr) => arr.length > 0,
+    ).length;
+    const allTags = [
+      ...lifePosts.flatMap((p) => p.tags as string[]),
+      ...projects.flatMap((p) => p.tags as string[]),
+      ...blogPosts.flatMap((p) => p.tags),
+    ];
+    const tags = new Set(allTags).size;
+    return { posts, categories, tags };
+  }, [lifePosts, projects, blogPosts]);
+
+  const postsCount = useCountUp(stats.posts);
+  const categoriesCount = useCountUp(stats.categories);
+  const tagsCount = useCountUp(stats.tags);
 
   return (
     <Card className={cn(className, "w-full min-w-0 max-w-full")}>
@@ -46,21 +71,21 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
                 {" "}
                 POSTS{" "}
               </Typography.Small>
-              <Typography.Lead> 3 </Typography.Lead>
+              <Typography.Lead>{postsCount}</Typography.Lead>
             </div>
             <div className="flex flex-col">
               <Typography.Small className="font-thin font-serif">
                 {" "}
                 CATEGORIES{" "}
               </Typography.Small>
-              <Typography.Lead> 1 </Typography.Lead>
+              <Typography.Lead>{categoriesCount}</Typography.Lead>
             </div>
             <div className="flex flex-col">
               <Typography.Small className="font-thin font-serif">
                 {" "}
                 TAGS{" "}
               </Typography.Small>
-              <Typography.Lead> 4 </Typography.Lead>
+              <Typography.Lead>{tagsCount}</Typography.Lead>
             </div>
           </div>
 
