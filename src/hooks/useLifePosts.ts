@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { BASE_URL } from "@/constants";
 
 const fetchLifePosts = async (): Promise<Post[]> => {
-  const res = await fetch(`${BASE_URL}/life-content/index.json`);
+  const res = await fetch(`${BASE_URL}/life/index.json`);
   if (!res.ok) throw new Error(`Failed to fetch life posts: ${res.statusText}`);
   return res.json();
 };

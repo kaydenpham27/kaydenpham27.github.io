@@ -51,11 +51,10 @@ const components: Components = {
   ),
   li: ({ children }) => <li className="ml-4 text-gray-800">{children}</li>,
   img: ({ src, alt }) => {
-    const formattedSrc = src?.replace("life", "life-content");
     return (
       <div className="flex flex-col text-center max-w-150 max-h-150 items-center mx-auto">
         <img
-          src={formattedSrc}
+          src={src}
           alt={alt ?? ""}
           className="w-fit h-full rounded-lg mt-4"
         />
