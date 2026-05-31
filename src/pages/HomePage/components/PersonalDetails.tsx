@@ -1,4 +1,5 @@
 import Typography from "@/components/ui/typography";
+import { BASE_URL } from "@/constants";
 
 type DetailsRowProps = {
   iconUrl: string;
@@ -27,19 +28,19 @@ export const PersonalDetails = () => {
         Brisbane, Australia
       </Typography.Large>
       <DetailsRow
-        iconUrl="./work_place.png"
+        iconUrl={`${BASE_URL}/work_place.png`}
         title="Company"
         description="Nanoputian"
       />
       <DetailsRow
-        iconUrl="./energy_drink.png"
+        iconUrl={`${BASE_URL}/energy_drink.png`}
         title="Drink"
         description="I love iced long black! Don't really know if 
         this is what they call it anywhere else, but in Australia, this is a GOATed drink.
         "
       />
       <DetailsRow
-        iconUrl="./enjoy.png"
+        iconUrl={`${BASE_URL}/enjoy.png`}
         title="Hobbies"
         description="I love hiking, the nature here in Australia is breathtaking, plenty of places we can go
         visit and enjoy on the weekends to escape a hectic working week. I also like to cook in the free time, 

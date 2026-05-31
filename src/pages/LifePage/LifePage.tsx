@@ -1,34 +1,33 @@
-import type { Post } from "@/types";
 import { LifeCard } from "./components/LifeCard";
-
-const pages: Post[] = [
-  {
-    title: "North Stradbroke Island",
-    description: "A trip to North Stradbroke Island - Vietnamese Version",
-    url: "north-stradbroke-island-25-12-2025",
-    startDate: "25-12-2025",
-    endDate: "25-12-2025",
-    tags: ["Australia", "QLD"],
-  },
-];
+import { useLifePosts } from "@/hooks/useLifePosts";
+import { LifePageSkeleton } from "./components/LifePageSkeleton";
 
 export const LifePage = () => {
+  const { data: lifePosts = [], isLoading, error } = useLifePosts();
+
+  if (isLoading) {
+    return <LifePageSkeleton />;
+  }
+
+  if (error) {
+    console.error(error);
+    return <></>;
+  }
+
   return (
     <div className="flex flex-row flex-wrap items-center gap-2">
-      {pages.map((page, index) => {
-        return (
-          <LifeCard
-            key={page.url}
-            title={page.title}
-            description={page.description}
-            url={page.url}
-            startDate={page.startDate}
-            endDate={page.endDate}
-            tags={page.tags}
-            delay={index * 0.1}
-          />
-        );
-      })}
+      {lifePosts.map((page, index) => (
+        <LifeCard
+          key={page.url}
+          title={page.title}
+          description={page.description}
+          url={page.url}
+          startDate={page.startDate}
+          endDate={page.endDate}
+          tags={page.tags}
+          delay={index * 0.1}
+        />
+      ))}
     </div>
   );
 };
