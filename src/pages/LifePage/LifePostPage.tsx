@@ -25,7 +25,7 @@ export const LifePostPage = () => {
     setError(null);
     setMarkdown("");
 
-    fetch(`${BASE_URL}/life-content/${contentUri}/index.md`, {
+    fetch(`${BASE_URL}/life/${contentUri}/index.md`, {
       signal: ac.signal,
     })
       .then((res) => {
