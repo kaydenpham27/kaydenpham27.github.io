@@ -20,6 +20,12 @@ export const LifePostPage = () => {
       return;
     }
 
+    if (!/^[a-z0-9][a-z0-9-_]*$/i.test(contentUri)) {
+      setError("Invalid post identifier.");
+      setLoading(false);
+      return;
+    }
+
     const ac = new AbortController();
     setLoading(true);
     setError(null);

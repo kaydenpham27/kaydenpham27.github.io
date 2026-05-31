@@ -217,7 +217,6 @@ export const loggerUtils = {
   },
   logEnvironmentInfo: () => {
     const environment = import.meta.env.VITE_ENVIRONMENT || "PROD";
-    const awsBaseUrl = import.meta.env.VITE_AWS_BASE_URL || "None provided";
     const isDev = environment.toUpperCase() === "DEV";
 
     logger.info("Application Started", {
@@ -225,17 +224,6 @@ export const loggerUtils = {
       logLevel: getLogLevel(),
       isDevelopment: isDev,
       timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      url: window.location.href,
-      screen: {
-        width: window.screen.width,
-        height: window.screen.height,
-      },
-      viewport: {
-        width: window.innerWidth,
-        height: window.innerHeight,
-      },
-      awsBaseUrl,
     });
   },
   group: (label: string, callback: () => void) => {
