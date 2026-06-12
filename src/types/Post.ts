@@ -7,4 +7,6 @@ export type Post = {
   endDate: string;
   tags: (typeof LIFE_TAGS)[number][];
   title: string;
+  imgPath: string;
+  imgClassName: string;
 };
