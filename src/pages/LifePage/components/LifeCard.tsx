@@ -11,6 +11,7 @@ import type { Post } from "@/types";
 import { Calendar1, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 type LifeCardProps = Post & {
   delay: number;
@@ -24,6 +25,8 @@ export const LifeCard = ({
   startDate,
   endDate,
   delay,
+  imgPath,
+  imgClassName,
 }: LifeCardProps) => {
   const navigate = useNavigate();
 
@@ -72,6 +75,11 @@ export const LifeCard = ({
         </CardHeader>
 
         <CardContent className="flex flex-col w-full items-center gap-5">
+          <img
+            src={imgPath}
+            className={cn("w-full max-h-50 border-gray-200 ", imgClassName)}
+            alt={title}
+          />
           <div className="flex flex-row flex-wrap justify-center gap-2">
             {tags.map((tag) => {
               return (

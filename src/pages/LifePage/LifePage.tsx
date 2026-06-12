@@ -21,6 +21,8 @@ export const LifePage = () => {
           title={page.title}
           description={page.description}
           url={page.url}
+          imgPath={page.imgPath}
+          imgClassName={page.imgClassName}
           startDate={page.startDate}
           endDate={page.endDate}
           tags={page.tags}
