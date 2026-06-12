@@ -24,7 +24,7 @@ export function MainLayout() {
 
 export function DetailedLayout() {
   return (
-    <div className="grid lg:grid-cols-[19rem_auto] grid-cols-1 justify-stretch gap-5">
+    <div className="grid lg:grid-cols-[21%_auto] grid-cols-1 justify-stretch gap-5">
       <div>
         <ProfileCard />
       </div>
