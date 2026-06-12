@@ -1,0 +1,82 @@
+import { useParams } from "react-router";
+import { Card, CardContent } from "@/components/ui/card";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
+import React from "react";
+import { BASE_URL } from "@/constants";
+import Typography from "@/components/ui/typography";
+import { motion } from "motion/react";
+import { LifePostPageSkeleton } from "@/pages/LifePage/components/LifePostPageSkeleton";
+
+export const BlogPostPage = () => {
+  const { contentUri } = useParams();
+  const [markdown, setMarkdown] = React.useState("");
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (!contentUri) {
+      setError("Missing post");
+      setLoading(false);
+      return;
+    }
+
+    if (!/^[a-z0-9][a-z0-9-_]*$/i.test(contentUri)) {
+      setError("Invalid post identifier.");
+      setLoading(false);
+      return;
+    }
+
+    const ac = new AbortController();
+    setLoading(true);
+    setError(null);
+    setMarkdown("");
+
+    fetch(`${BASE_URL}/blogs/${contentUri}/index.md`, {
+      signal: ac.signal,
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Could not load this post (${res.status})`);
+        }
+        return res.text();
+      })
+      .then((text) => setMarkdown(text))
+      .catch((e: unknown) => {
+        if (e instanceof Error && e.name === "AbortError") return;
+        setError(
+          e instanceof Error
+            ? e.message
+            : "Something went wrong loading this post.",
+        );
+      })
+      .finally(() => {
+        if (!ac.signal.aborted) setLoading(false);
+      });
+
+    return () => ac.abort();
+  }, [contentUri]);
+
+  if (loading) {
+    return <LifePostPageSkeleton />;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-row flex-wrap items-center gap-2"
+    >
+      <Card>
+        <CardContent className="pt-6">
+          {error && !loading && (
+            <Typography.Muted className="font-thin text-red-600">
+              {error}
+            </Typography.Muted>
+          )}
+          {!loading && !error && <MarkdownRenderer content={markdown} />}
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};

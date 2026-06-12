@@ -10,6 +10,9 @@ const HomePage = lazy(() =>
 const BlogsPage = lazy(() =>
   import("@/pages/BlogsPage").then((m) => ({ default: m.BlogsPage })),
 );
+const BlogPostPage = lazy(() =>
+  import("@/pages/BlogsPage").then((m) => ({ default: m.BlogPostPage })),
+);
 const ProjectsPage = lazy(() =>
   import("@/pages/ProjectsPage").then((m) => ({ default: m.ProjectsPage })),
 );
@@ -44,6 +47,7 @@ export const AppRouter = () => {
           </Route>
           <Route element={<DetailedLayout />}>
             <Route path="/life/:contentUri" element={wrap(<LifePostPage />)} />
+            <Route path="/blogs/:contentUri" element={wrap(<BlogPostPage />)} />
           </Route>
         </Routes>
       </SideBar>
