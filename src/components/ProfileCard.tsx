@@ -130,7 +130,7 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
           </div>
 
           {/* Social Media Links */}
-          <div className="flex flex-row justify-around items-center">
+          {/* <div className="flex flex-row justify-center items-center gap-7 mt-2">
             <GitHubIcon
               width="25px"
               className="hover:bg-transparent"
@@ -144,7 +144,7 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
             />
             <MailIcon />
             <CodeforcesIcon />
-          </div>
+          </div> */}
         </div>
       </CardContent>
     </Card>

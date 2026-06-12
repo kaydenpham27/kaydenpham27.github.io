@@ -87,7 +87,7 @@ export const ProjectCard = ({
         <CardContent className="flex flex-col w-full items-center gap-5">
           <img
             src={imgPath}
-            className={cn("w-full h-auto border-gray-200 ", imgClassName)}
+            className={cn("w-full max-h-50 border-gray-200 ", imgClassName)}
             alt={title}
           />
           <div className="flex flex-row flex-wrap justify-center gap-2">
