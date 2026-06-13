@@ -16,7 +16,7 @@ const components: Components = {
     </Typography.H2>
   ),
   h3: ({ children }) => (
-    <Typography.H3 className="text-start">{children}</Typography.H3>
+    <Typography.H3 className="text-start mb-4">{children}</Typography.H3>
   ),
   h4: ({ children }) => (
     <Typography.H4 className="text-start">{children}</Typography.H4>
@@ -41,6 +41,9 @@ const components: Components = {
       </Typography.InlineCode>
     );
   },
+  strong: ({ children }) => (
+    <Typography.Strong className="font-bold">{children}</Typography.Strong>
+  ),
   ul: ({ children }) => (
     <ul className="flex flex-col items-start list-disc list-inside mb-4 space-y-2">
       {children}

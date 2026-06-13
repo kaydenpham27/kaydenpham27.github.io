@@ -130,6 +130,10 @@ export const Muted = ({ className, children }: TypographyProps) => {
   );
 };
 
+export const Strong = ({ className, children }: TypographyProps) => {
+  return <strong className={cn("font-bold", className)}>{children}</strong>;
+};
+
 const Typography = {
   H1,
   H2,
@@ -143,6 +147,7 @@ const Typography = {
   Medium,
   Small,
   Muted,
+  Strong,
 };
 
 export default Typography;

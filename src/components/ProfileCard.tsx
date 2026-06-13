@@ -5,7 +5,7 @@ import { Coffee, MapPin } from "lucide-react";
 import { Button } from "./ui/button";
 import { GITHUB_PROFILE_URL } from "@/constants/github";
 import { GitHubIcon } from "./GithubIcon";
-import { BASE_URL } from "@/constants";
+import { BASE_URL, BUY_ME_A_COFFEE_URL } from "@/constants";
 import { useMemo } from "react";
 import { useLifePosts } from "@/hooks/useLifePosts";
 import { useProjects } from "@/hooks/useProjects";
@@ -110,7 +110,11 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
               role="button"
               tabIndex={0}
               onClick={() =>
-                window.open(GITHUB_PROFILE_URL, "_blank", "noopener,noreferrer")
+                window.open(
+                  BUY_ME_A_COFFEE_URL,
+                  "_blank",
+                  "noopener,noreferrer",
+                )
               }
               style={{ outline: "none" }}
             >
