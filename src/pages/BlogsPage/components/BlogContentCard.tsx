@@ -29,8 +29,18 @@ export const BlogContentCard = ({
       className="w-full"
       onClick={() => navigate(url)}
     >
-      <Card className="h-full flex flex-col shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
-        <CardHeader className="flex flex-col text-start w-full gap-1">
+      <Card className="h-full flex flex-col overflow-hidden pt-0 gap-0 shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
+        {imgPath && (
+          <div className="h-48 w-full pb-2">
+            <img
+              src={imgPath}
+              alt={title}
+              loading="lazy"
+              className={cn("w-full h-full object-cover", imgClassName)}
+            />
+          </div>
+        )}
+        <CardHeader className="flex flex-col text-start w-full pt-4 gap-2">
           <Typography.H4>{title}</Typography.H4>
           <div className="flex flex-row gap-2 items-center">
             <Calendar1 className="w-4 flex-shrink-0" />
@@ -42,13 +52,8 @@ export const BlogContentCard = ({
             {description}
           </Typography.Muted>
         </CardHeader>
-        <CardContent className="flex flex-col w-full items-center gap-5">
-          <img
-            src={imgPath}
-            className={cn("w-full max-h-50 border-gray-200 ", imgClassName)}
-            alt={title}
-          />
-          <div className="flex flex-row flex-wrap justify-center gap-2">
+        <CardContent className="flex flex-col w-full gap-2 pt-2">
+          <div className="flex flex-row flex-wrap justify-start gap-2">
             {tags.map((tag) => (
               <Badge key={tag} variant="outline">
                 <Typography.Small>{tag}</Typography.Small>

@@ -15,12 +15,12 @@ export const HomePage = () => {
         <CardHeader className="text-start">
           <Typography.H4 className="pb-2"> Phạm Trung Kiên </Typography.H4>
           <img
-            src={`${BASE_URL}/kien-with-flower.jpg`}
+            src={`${BASE_URL}/kien-fitzroy.jpg`}
             alt="Kien at Nabana no Sato flower garden, Japan"
             className="w-180 mx-auto shadow-2xl rounded-sm"
           />
           <Typography.Muted className="mx-auto font-thin text-gray-500">
-            Kien at Nabana no Sato, Japan in Jan, 2023
+            Kien at Fitzroy, Australia in Jan, 2026
           </Typography.Muted>
         </CardHeader>
         <CardContent className="flex flex-col text-start gap-2">
