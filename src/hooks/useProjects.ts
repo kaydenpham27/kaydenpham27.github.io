@@ -9,5 +9,9 @@ const fetchProjects = async (): Promise<Project[]> => {
 };
 
 export const useProjects = () => {
-  return useQuery({ queryKey: ["projects"], queryFn: fetchProjects });
+  return useQuery({
+    queryKey: ["projects"],
+    queryFn: fetchProjects,
+    staleTime: 1000 * 60 * 60,
+  });
 };

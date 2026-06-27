@@ -9,5 +9,9 @@ const fetchLifePosts = async (): Promise<Post[]> => {
 };
 
 export const useLifePosts = () => {
-  return useQuery({ queryKey: ["lifePosts"], queryFn: fetchLifePosts });
+  return useQuery({
+    queryKey: ["lifePosts"],
+    queryFn: fetchLifePosts,
+    staleTime: 1000 * 60 * 60,
+  });
 };

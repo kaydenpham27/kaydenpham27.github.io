@@ -9,5 +9,9 @@ const fetchBlogPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const useBlogPosts = () => {
-  return useQuery({ queryKey: ["blogPosts"], queryFn: fetchBlogPosts });
+  return useQuery({
+    queryKey: ["blogPosts"],
+    queryFn: fetchBlogPosts,
+    staleTime: 1000 * 60 * 60,
+  });
 };
