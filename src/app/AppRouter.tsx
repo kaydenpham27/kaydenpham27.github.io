@@ -3,32 +3,23 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { DetailedLayout, MainLayout } from "./App";
+import { HomePage } from "@/pages/HomePage";
+import { BlogsPage } from "@/pages/BlogsPage";
+import { ProjectsPage } from "@/pages/ProjectsPage";
+import { LifePage } from "@/pages/LifePage";
+import { PortfolioPage } from "@/pages/PortfolioPage";
+import { LifePostPageSkeleton } from "@/pages/LifePage/components/LifePostPageSkeleton";
 
-const HomePage = lazy(() =>
-  import("@/pages/HomePage").then((m) => ({ default: m.HomePage })),
-);
-const BlogsPage = lazy(() =>
-  import("@/pages/BlogsPage").then((m) => ({ default: m.BlogsPage })),
-);
 const BlogPostPage = lazy(() =>
   import("@/pages/BlogsPage").then((m) => ({ default: m.BlogPostPage })),
-);
-const ProjectsPage = lazy(() =>
-  import("@/pages/ProjectsPage").then((m) => ({ default: m.ProjectsPage })),
-);
-const LifePage = lazy(() =>
-  import("@/pages/LifePage").then((m) => ({ default: m.LifePage })),
 );
 const LifePostPage = lazy(() =>
   import("@/pages/LifePage").then((m) => ({ default: m.LifePostPage })),
 );
-const PortfolioPage = lazy(() =>
-  import("@/pages/PortfolioPage").then((m) => ({ default: m.PortfolioPage })),
-);
 
 const wrap = (element: React.ReactNode) => (
   <ErrorBoundary>
-    <Suspense>{element}</Suspense>
+    <Suspense fallback={<LifePostPageSkeleton />}>{element}</Suspense>
   </ErrorBoundary>
 );
 
