@@ -60,7 +60,6 @@ export class ErrorBoundary extends React.Component<Props, State> {
                 )}
 
                 <button
-                  // eslint-disable-next-line jsx-a11y/no-autofocus
                   autoFocus
                   onClick={tryAgain}
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

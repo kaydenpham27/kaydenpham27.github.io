@@ -6,17 +6,20 @@ import { Button } from "./ui/button";
 import { GITHUB_PROFILE_URL } from "@/constants/github";
 import { GitHubIcon } from "./GithubIcon";
 import { BASE_URL, BUY_ME_A_COFFEE_URL } from "@/constants";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useLifePosts } from "@/hooks/useLifePosts";
 import { useProjects } from "@/hooks/useProjects";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 import { useCountUp } from "@/hooks/useCountUp";
+import { Skeleton } from "./ui/skeleton";
 
 type ProfileCardProps = {
   className?: string;
 };
 
 export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
+  const [profileLoaded, setProfileLoaded] = useState(false);
+
   const { data: lifePosts = [] } = useLifePosts();
   const { data: projects = [] } = useProjects();
   const { data: blogPosts = [] } = useBlogPosts();
@@ -45,8 +48,16 @@ export const ProfileCard = ({ className = "" }: ProfileCardProps) => {
         <img
           src={`${BASE_URL}/AVA.png`}
           alt="Portrait of Trung Kien Pham"
-          className="aspect-square place-self-center rounded-full border border-solid border-gray-700 object-cover w-[30%] lg:w-[50%]"
+          onLoad={() => setProfileLoaded(true)}
+          className={cn(
+            "aspect-square place-self-center rounded-full border border-solid border-gray-700 object-cover w-[30%] lg:w-[50%]",
+            { hidden: !profileLoaded },
+          )}
         />
+        {!profileLoaded && (
+          <Skeleton className="aspect-square place-self-center rounded-full border border-solid border-gray-700 object-cover w-[30%] lg:w-[50%]" />
+        )}
+
         <Typography.Large className="pt-5">Trung Kien Pham</Typography.Large>
         <Typography.Muted className="italic">
           Software Engineer

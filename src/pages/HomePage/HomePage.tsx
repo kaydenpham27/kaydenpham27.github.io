@@ -1,9 +1,14 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import Typography from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 import { BASE_URL } from "@/constants";
 import { motion } from "motion/react";
+import React from "react";
 
 export const HomePage = () => {
+  const [heroLoaded, setHeroLoaded] = React.useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -14,10 +19,17 @@ export const HomePage = () => {
       <Card className="w-full">
         <CardHeader className="text-start">
           <Typography.H4 className="pb-2"> Phạm Trung Kiên </Typography.H4>
+          {!heroLoaded && (
+            <Skeleton className="w-full max-w-180 h-96 mx-auto rounded-sm" />
+          )}
           <img
             src={`${BASE_URL}/kien-fitzroy.jpg`}
             alt="Kien at Nabana no Sato flower garden, Japan"
-            className="w-180 mx-auto shadow-2xl rounded-sm"
+            onLoad={() => setHeroLoaded(true)}
+            className={cn(
+              "w-180 mx-auto shadow-2xl rounded-sm",
+              !heroLoaded && "hidden",
+            )}
           />
           <Typography.Muted className="mx-auto font-thin text-gray-500">
             Kien at Fitzroy, Australia in Jan, 2026

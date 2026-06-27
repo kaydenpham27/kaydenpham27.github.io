@@ -1,10 +1,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import Typography from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import type { ProjectCardTag } from "@/types/ProjectCardTag";
 import { Calendar1, CalendarCheck, ExternalLink } from "lucide-react";
 import { motion } from "motion/react";
+import React from "react";
 
 export type ProjectCardProps = {
   title: string;
@@ -29,6 +31,8 @@ export const ProjectCard = ({
   endDate,
   delay,
 }: ProjectCardProps) => {
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+
   const handleCardClick = () => {
     if (githubUrl) {
       window.open(githubUrl, "_blank", "noopener,noreferrer");
@@ -50,15 +54,17 @@ export const ProjectCard = ({
       <Card className="h-full flex flex-col overflow-hidden pt-0 gap-0 shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
         {imgPath && (
           <div className="pb-2">
+            {!imgLoaded && <Skeleton className="h-48 w-full" />}
             <img
               src={imgPath}
               alt={title}
-              loading="lazy"
+              onLoad={() => setImgLoaded(true)}
               className={cn(
                 "h-48 w-full p-4 bg-muted max-h-full max-w-full object-contain flex items-center justify-center",
                 imgClassName,
+                !imgLoaded && "hidden",
               )}
-              style={{ display: "flex" }}
+              style={{ display: imgLoaded ? "flex" : "none" }}
             />
           </div>
         )}

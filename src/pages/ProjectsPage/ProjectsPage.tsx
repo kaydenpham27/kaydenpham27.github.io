@@ -1,11 +1,11 @@
-import { ProjectCard } from "./components";
+import { ProjectCard, ProjectsPageSkeleton } from "./components";
 import { useProjects } from "@/hooks/useProjects";
 
 export const ProjectsPage = () => {
   const { data: projects = [], isLoading, error } = useProjects();
 
   if (isLoading) {
-    return <></>;
+    return <ProjectsPageSkeleton />;
   }
 
   if (error) {
