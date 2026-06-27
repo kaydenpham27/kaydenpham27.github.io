@@ -1,11 +1,13 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import Typography from "@/components/ui/typography";
 import type { Post } from "@/types";
 import { Calendar1, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 type LifeCardProps = Post & {
   delay: number;
@@ -23,6 +25,7 @@ export const LifeCard = ({
   imgClassName,
 }: LifeCardProps) => {
   const navigate = useNavigate();
+  const [imgLoaded, setImgLoaded] = React.useState(false);
 
   return (
     <motion.div
@@ -40,11 +43,16 @@ export const LifeCard = ({
       <Card className="h-full flex flex-col overflow-hidden pt-0 gap-0 shadow-xl/20 transition-all duration-300 hover:-translate-y-2 hover:border-blue-500 hover:shadow-xl cursor-pointer">
         {imgPath && (
           <div className="h-48 w-full pb-2">
+            {!imgLoaded && <Skeleton className="h-48 w-full" />}
             <img
               src={imgPath}
               alt={title}
-              loading="lazy"
-              className={cn("w-full h-full object-cover", imgClassName)}
+              onLoad={() => setImgLoaded(true)}
+              className={cn(
+                "w-full h-full object-cover",
+                imgClassName,
+                !imgLoaded && "hidden",
+              )}
             />
           </div>
         )}

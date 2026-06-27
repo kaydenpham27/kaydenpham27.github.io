@@ -1,12 +1,12 @@
 import { BlogContentCard } from "./components";
-import { BlogsPageSkeleton } from "./components";
+import { PostCardSkeleton } from "@/components/PostCardSkeleton";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 export const BlogsPage = () => {
   const { data: blogPosts = [], isLoading, error } = useBlogPosts();
 
   if (isLoading) {
-    return <BlogsPageSkeleton />;
+    return <PostCardSkeleton dateCount={1} />;
   }
 
   if (error) {

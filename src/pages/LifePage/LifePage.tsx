@@ -1,12 +1,12 @@
 import { LifeCard } from "./components/LifeCard";
 import { useLifePosts } from "@/hooks/useLifePosts";
-import { LifePageSkeleton } from "./components/LifePageSkeleton";
+import { PostCardSkeleton } from "@/components/PostCardSkeleton";
 
 export const LifePage = () => {
   const { data: lifePosts = [], isLoading, error } = useLifePosts();
 
   if (isLoading) {
-    return <LifePageSkeleton />;
+    return <PostCardSkeleton />;
   }
 
   if (error) {
